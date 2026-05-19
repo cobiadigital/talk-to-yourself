@@ -103,6 +103,7 @@ function setComposeSender(sender) {
   document.getElementById('compose-area').className = `mode-${sender}`;
   document.getElementById('mode-me').classList.toggle('active', sender === 'me');
   document.getElementById('mode-them').classList.toggle('active', sender === 'them');
+  document.getElementById('compose').focus();
 }
 
 let draftTimer;
