@@ -16,7 +16,11 @@
   --font: system-ui, -apple-system, sans-serif;
 }
 
-html, body {
+html {
+  height: -webkit-fill-available;
+}
+
+body {
   height: 100%;
 }
 
@@ -32,6 +36,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: 100dvh;
   max-width: 700px;
   margin: 0 auto;
   background: var(--surface);
