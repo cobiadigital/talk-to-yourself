@@ -1,0 +1,8 @@
+{
+  "name": "talk to yourself",
+  "short_name": "tty",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}
