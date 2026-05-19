@@ -1,0 +1,16 @@
+name = "talk-to-myself"
+main = "worker.js"
+compatibility_date = "2026-05-19"
+
+[assets]
+directory = "."
+
+# To enable sync, create a KV namespace in the Cloudflare dashboard,
+# then uncomment and fill in the id below and push:
+#
+# [[kv_namespaces]]
+# binding = "STORE"
+# id = "YOUR_KV_NAMESPACE_ID_HERE"
+#
+# Also add AUTH_SECRET via:
+#   Workers dashboard → talk-to-myself → Settings → Variables and Secrets
