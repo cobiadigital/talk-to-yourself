@@ -38,9 +38,15 @@
 
     <div id="feed"></div>
 
-    <div id="compose-area">
-      <textarea id="compose" placeholder="write something..." rows="3"></textarea>
-      <button id="send-btn">Send</button>
+    <div id="compose-area" class="mode-me">
+      <div id="compose-mode">
+        <button id="mode-me" class="active">me</button>
+        <button id="mode-them">them</button>
+      </div>
+      <div id="compose-row">
+        <textarea id="compose" placeholder="write something..." rows="3"></textarea>
+        <button id="send-btn">Send</button>
+      </div>
     </div>
   </div>
 
