@@ -5,14 +5,13 @@
 }
 
 :root {
-  --bg: #f5f5f0;
-  --surface: #ffffff;
-  --me-bg: #e8e0f0;
-  --them-bg: #dff0e8;
-  --border: #ddd;
-  --text: #222;
-  --muted: #888;
-  --accent: #5a4fcf;
+  --bg: #000000;
+  --surface: #000000;
+  --me-bg: #0a84ff;
+  --them-bg: #3a3a3c;
+  --border: #3a3a3c;
+  --text: #ffffff;
+  --muted: #8e8e93;
   --font: system-ui, -apple-system, sans-serif;
 }
 
@@ -37,7 +36,6 @@ body {
   max-width: 700px;
   margin: 0 auto;
   background: var(--surface);
-  box-shadow: 0 0 30px rgba(0,0,0,0.08);
 }
 
 header {
@@ -47,6 +45,7 @@ header {
   padding: 12px 16px;
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
+  background: #1c1c1e;
 }
 
 #app-title {
@@ -72,7 +71,7 @@ header {
 #settings-panel {
   border-bottom: 1px solid var(--border);
   padding: 16px;
-  background: #fafaf8;
+  background: #1c1c1e;
   flex-shrink: 0;
 }
 
@@ -107,7 +106,7 @@ header {
   border-radius: 4px;
   font-size: 13px;
   margin-bottom: 8px;
-  background: var(--surface);
+  background: #2c2c2e;
   color: var(--text);
 }
 
@@ -123,7 +122,7 @@ header {
   padding: 5px 12px;
   border: 1px solid var(--border);
   border-radius: 4px;
-  background: var(--surface);
+  background: #2c2c2e;
   color: var(--text);
   font-size: 13px;
   cursor: pointer;
@@ -131,7 +130,7 @@ header {
 
 .settings-section button:hover,
 .import-label:hover {
-  background: var(--bg);
+  background: #3a3a3c;
 }
 
 #sync-status {
@@ -171,6 +170,7 @@ header {
   word-break: break-word;
   font-size: 15px;
   line-height: 1.5;
+  color: #ffffff;
 }
 
 .msg.me .msg-bubble {
@@ -208,7 +208,7 @@ header {
 }
 
 .sender-toggle:hover {
-  background: var(--bg);
+  background: #2c2c2e;
   color: var(--text);
 }
 
@@ -220,21 +220,22 @@ header {
   border-top: 1px solid var(--border);
   flex-shrink: 0;
   transition: background 0.2s;
+  background: #1c1c1e;
 }
 
 #compose-area.mode-me {
-  background: var(--me-bg);
+  background: #0a2a4a;
 }
 
 #compose-area.mode-them {
-  background: var(--them-bg);
+  background: #2c2c2e;
 }
 
 #compose-mode {
   display: flex;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid var(--border);
 }
 
 #compose-mode button {
@@ -243,7 +244,7 @@ header {
   font-size: 17px;
   font-weight: 600;
   border: none;
-  background: rgba(255,255,255,0.45);
+  background: #2c2c2e;
   color: var(--muted);
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
@@ -251,8 +252,15 @@ header {
 }
 
 #compose-mode button.active {
-  background: rgba(255,255,255,0.85);
-  color: var(--text);
+  color: #ffffff;
+}
+
+#mode-me.active {
+  background: var(--me-bg);
+}
+
+#mode-them.active {
+  background: var(--them-bg);
 }
 
 #compose-row {
@@ -264,28 +272,31 @@ header {
 #compose {
   flex: 1;
   padding: 10px 14px;
-  border: 1px solid rgba(0,0,0,0.12);
+  border: 1px solid var(--border);
   border-radius: 16px;
   font-family: var(--font);
   font-size: 15px;
   line-height: 1.5;
   resize: none;
-  background: rgba(255,255,255,0.6);
-  color: var(--text);
+  background: #2c2c2e;
+  color: #ffffff;
   outline: none;
   overflow-y: auto;
   max-height: 200px;
 }
 
+#compose::placeholder {
+  color: var(--muted);
+}
+
 #compose:focus {
-  background: rgba(255,255,255,0.85);
-  border-color: rgba(0,0,0,0.2);
+  border-color: #636366;
 }
 
 #send-btn {
   padding: 8px 18px;
-  background: rgba(0,0,0,0.15);
-  color: var(--text);
+  background: var(--me-bg);
+  color: #ffffff;
   border: none;
   border-radius: 12px;
   font-size: 14px;
@@ -296,5 +307,5 @@ header {
 }
 
 #send-btn:hover {
-  background: rgba(0,0,0,0.22);
+  opacity: 0.88;
 }
