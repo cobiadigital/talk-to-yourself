@@ -10,7 +10,7 @@ directory = "."
 #
 [[kv_namespaces]]
 binding = "STORE"
-id = "talktomyself-bb"
+id = "fa73c265797245748160a1596bf5a761"
 #
 # Also add AUTH_SECRET via:
 #   Workers dashboard → talk-to-myself → Settings → Variables and Secrets
