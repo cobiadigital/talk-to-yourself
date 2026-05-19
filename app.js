@@ -75,6 +75,7 @@ function sendMessage() {
   const feed = document.getElementById('feed');
   feed.appendChild(renderMessage(msg));
   scrollToBottom();
+  compose.focus();
 
   if (storage.isCloudflareConfigured()) {
     storage.syncToCloudflare(messages).catch(() => {});
@@ -194,6 +195,7 @@ function init() {
   document.getElementById('send-btn').addEventListener('click', sendMessage);
   document.getElementById('mode-me').addEventListener('click', () => setComposeSender('me'));
   document.getElementById('mode-them').addEventListener('click', () => setComposeSender('them'));
+  document.getElementById('feed').addEventListener('click', () => document.getElementById('compose').blur());
 
   initSettings();
 }
