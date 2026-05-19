@@ -1,5 +1,6 @@
 const storage = new StorageManager();
 let messages = [];
+let currentSender = 'me';
 
 function formatTime(isoString) {
   const d = new Date(isoString);
@@ -60,7 +61,7 @@ function sendMessage() {
   const msg = {
     id: crypto.randomUUID(),
     content: text,
-    sender: 'me',
+    sender: currentSender,
     sentAt: new Date().toISOString(),
   };
 
@@ -95,6 +96,13 @@ function toggleSender(id) {
   if (storage.isCloudflareConfigured()) {
     storage.syncToCloudflare(messages).catch(() => {});
   }
+}
+
+function setComposeSender(sender) {
+  currentSender = sender;
+  document.getElementById('compose-area').className = `mode-${sender}`;
+  document.getElementById('mode-me').classList.toggle('active', sender === 'me');
+  document.getElementById('mode-them').classList.toggle('active', sender === 'them');
 }
 
 let draftTimer;
@@ -183,6 +191,8 @@ function init() {
   });
 
   document.getElementById('send-btn').addEventListener('click', sendMessage);
+  document.getElementById('mode-me').addEventListener('click', () => setComposeSender('me'));
+  document.getElementById('mode-them').addEventListener('click', () => setComposeSender('them'));
 
   initSettings();
 }
