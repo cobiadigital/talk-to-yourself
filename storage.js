@@ -44,7 +44,7 @@ class StorageManager {
   }
 
   async syncToCloudflare(msgs) {
-    const url = this.getCfUrl();
+    const url = this.getCfUrl().replace(/\/+$/, '');
     const secret = this.getCfSecret();
     if (!url || !secret) return;
     await fetch(`${url}/messages`, {
@@ -58,13 +58,16 @@ class StorageManager {
   }
 
   async fetchFromCloudflare() {
-    const url = this.getCfUrl();
+    const url = this.getCfUrl().replace(/\/+$/, '');
     const secret = this.getCfSecret();
     if (!url || !secret) throw new Error('Cloudflare not configured');
     const res = await fetch(`${url}/messages`, {
       headers: { 'Authorization': `Bearer ${secret}` },
     });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(`${res.status}: ${body}`);
+    }
     return res.json();
   }
 

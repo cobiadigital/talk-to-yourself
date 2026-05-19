@@ -24,16 +24,20 @@ export default {
       if (!authorized(request, env)) {
         return new Response('Unauthorized', { status: 401, headers: cors });
       }
-      if (request.method === 'GET') {
-        const data = (await env.STORE.get('messages')) ?? '[]';
-        return new Response(data, {
-          headers: { ...cors, 'Content-Type': 'application/json' },
-        });
-      }
-      if (request.method === 'POST') {
-        const body = await request.text();
-        await env.STORE.put('messages', body);
-        return new Response('OK', { headers: cors });
+      try {
+        if (request.method === 'GET') {
+          const data = (await env.STORE.get('messages')) ?? '[]';
+          return new Response(data, {
+            headers: { ...cors, 'Content-Type': 'application/json' },
+          });
+        }
+        if (request.method === 'POST') {
+          const body = await request.text();
+          await env.STORE.put('messages', body);
+          return new Response('OK', { headers: cors });
+        }
+      } catch (err) {
+        return new Response(err.message, { status: 500, headers: cors });
       }
     }
 
